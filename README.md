@@ -19,25 +19,36 @@ Test reports are generated in a simple HTML format.
 
 ## Requirements
 
-To get started, you need to have `Node.js` `v22.11.0` or later. To install `cypress`, you can use `npm` package installer.
+To get started, you need to have [Node.js](https://nodejs.org/en/download/package-manager) version `v22.11.0` or later. To install `cypress` and save its requirement to `package.json`, you can use `npm` package installer with the next command:
 
 > npm install cypress --save-dev
 
 ## Environment
 
-The solution was created and tests on Windows 11. For other systems, some adjustments might be needed.
+The solution was created and tested on Windows 11. For other systems, some adjustments might be needed.
 
-UI tests require **Google Chrome** browser. It must be installed on your machine to run the tests.
+Cypress can run tests on any browser installed on your machine.
+UI tests were tested on **Chrome v131**, **Edge v131** and **Electron v118**.
 
 ## Run tests
 
-Tests could be run via the command line in main directory.
+### First method
 
-To open cypress, run this:
+Tests could be run via `cypress` app.
+
+To open cypress, run this in main directory command line:
 
 > npx cypress open
 
-YOu need to chose `e2e` tests to see the solution.
+You need to choose `e2e testing` and any browser to open the spec files.
+
+To run UI tests, click on `ui.cy.js`
+
+### Second method
+
+Tests could be run via the command line in main directory.
+
+> npx cypress run --e2e --browser=chrome
 
 ## Internal structure
 
