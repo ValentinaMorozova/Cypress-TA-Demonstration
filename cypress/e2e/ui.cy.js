@@ -1,7 +1,7 @@
 describe("UI tests", () => {
   beforeEach(() => {
     // 1. Open the main page.
-    cy.visit("https://demowebshop.tricentis.com/");
+    cy.visit("/");
   });
 
   it("001. Verify user login through the main page", () => {
@@ -18,7 +18,7 @@ describe("UI tests", () => {
 
     // 4. Click the"Log in" button
     cy.get("form > .buttons > .login-button").click();
-    cy.url().should("eq", "https://demowebshop.tricentis.com/");
+    cy.url().should("eq", Cypress.config("baseUrl"));
 
     // Expected Result
     // 1.The user should be logged in successfully.
