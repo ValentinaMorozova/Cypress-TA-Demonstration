@@ -38,7 +38,8 @@ describe("UI tests", () => {
 
     // Expected Result
     // 1. There should be 4 products displayed for the initial search after step 3.
-    cy.get(".search-results").find(".item-box").should("have.length", 4);
+    cy.get(".search-results").find(".item-box").as("foundProducts");
+    cy.get("@foundProducts").should("have.length", 4);
 
     // 4. Open "Advanced Search".
     cy.get("#As").should("not.be.checked");
@@ -64,11 +65,10 @@ describe("UI tests", () => {
 
     // Expected Result
     // 2. There should be 3 products displayed for the advanced search after step 7.
-    cy.get(".search-results").find(".item-box").should("have.length", 3);
+    cy.get("@foundProducts").should("have.length", 3);
 
     // 3. The first product in the advanced search should have the title "Build your own cheap computer".
-    cy.get(".search-results")
-      .find(".item-box")
+    cy.get("@foundProducts")
       .find(".product-title")
       .eq(0)
       .should("contain.text", "Build your own cheap computer");
