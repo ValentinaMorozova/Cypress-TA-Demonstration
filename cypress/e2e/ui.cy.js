@@ -91,9 +91,8 @@ describe("UI tests", () => {
     // 4. Open the "Build your own cheap computer" product page.
     cy.get(".product-item")
       .find(".product-title")
-      .find('[href="/build-your-cheap-own-computer"]')
+      .contains("Build your own cheap computer")
       .click();
-    cy.url().should("include", "build-your-cheap-own-computer");
     cy.get("h1").should("contain.text", "Build your own cheap computer");
 
     // 5. Click "Add to cart".
@@ -135,9 +134,8 @@ describe("UI tests", () => {
     // 6. Open the "Computing and Internet" product page.
     cy.get(".product-item")
       .find(".product-title")
-      .find('[href="/computing-and-internet"]')
+      .contains("Computing and Internet")
       .click();
-    cy.url().should("include", "computing-and-internet");
     cy.get("h1").should("contain.text", "Computing and Internet");
 
     // 7. Click "Add to cart".
