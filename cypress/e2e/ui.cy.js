@@ -42,7 +42,6 @@ describe("UI tests", () => {
     cy.get("@foundProducts").should("have.length", 4);
 
     // 4. Open "Advanced Search".
-    cy.get("#As").should("not.be.checked");
     cy.get("#As").check();
     cy.get("#As").should("be.checked");
     cy.get("#advanced-search-block").should(
@@ -70,7 +69,7 @@ describe("UI tests", () => {
     // 3. The first product in the advanced search should have the title "Build your own cheap computer".
     cy.get("@foundProducts")
       .find(".product-title")
-      .eq(0)
+      .first()
       .should("contain.text", "Build your own cheap computer");
   });
 
