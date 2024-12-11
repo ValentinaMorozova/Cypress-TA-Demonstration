@@ -1,5 +1,7 @@
+/// <reference types="cypress" />
+
 describe("UI tests", () => {
-  beforeEach(() => {
+  beforeEach("Navigate to the main page", () => {
     // 1. Open the main page.
     cy.visit("/");
   });
@@ -17,7 +19,7 @@ describe("UI tests", () => {
     cy.get("#Password").type("passw0rd");
 
     // 4. Click the"Log in" button
-    cy.get("form > .buttons > .login-button").click();
+    cy.get(".login-button").click();
     cy.url().should("eq", Cypress.config("baseUrl"));
 
     // Expected Result
@@ -36,7 +38,7 @@ describe("UI tests", () => {
 
     // Expected Result
     // 1. There should be 4 products displayed for the initial search after step 3.
-    cy.get(".search-results").get(".item-box").should("have.length", 4);
+    cy.get(".search-results").find(".item-box").should("have.length", 4);
 
     // 4. Open "Advanced Search".
     cy.get("#As").should("not.be.checked");
@@ -62,31 +64,36 @@ describe("UI tests", () => {
 
     // Expected Result
     // 2. There should be 3 products displayed for the advanced search after step 7.
-    cy.get(".search-results").get(".item-box").should("have.length", 3);
+    cy.get(".search-results").find(".item-box").should("have.length", 3);
 
     // 3. The first product in the advanced search should have the title "Build your own cheap computer".
     cy.get(".search-results")
-      .get(".item-box")
-      .get(".product-title")
+      .find(".item-box")
+      .find(".product-title")
       .eq(0)
       .should("contain.text", "Build your own cheap computer");
   });
 
   it("003.1. Add default computer to cart", () => {
     // 2. Navigate to the "Computer" category from the top menu.
-    cy.get('.top-menu > :nth-child(2) > [href="/computers"]').click();
+    cy.get(".top-menu").find('[href="/computers"]').click();
     cy.url().should("include", "computers");
     cy.get("h1").should("have.text", "Computers");
 
     // 3. Select the "Desktops" subcategory.
-    cy.get(":nth-child(1) > .sub-category-item > .title > a").click();
+    cy.get(".sub-category-item")
+      .find(".title")
+      .find('[href="/desktops"]')
+      .click();
     cy.url().should("include", "desktops");
     cy.get("h1").should("have.text", "Desktops");
 
     // 4. Open the "Build your own cheap computer" product page.
-    cy.get(
-      ":nth-child(1) > .product-item > .details > .product-title > a"
-    ).click();
+    cy.get(".product-item")
+      .find(".product-title")
+      .find('[href="/build-your-cheap-own-computer"]')
+      .click();
+    cy.url().should("include", "build-your-cheap-own-computer");
     cy.get("h1").should("contain.text", "Build your own cheap computer");
 
     // 5. Click "Add to cart".
@@ -117,18 +124,20 @@ describe("UI tests", () => {
     cy.get("#Password").type("passw0rd");
 
     // 4. Click the"Log in" button
-    cy.get("form > .buttons > .login-button").click();
-    cy.url().should("eq", "https://demowebshop.tricentis.com/");
+    cy.get(".login-button").click();
+    cy.url().should("eq", Cypress.config("baseUrl"));
 
     // 5. Navigate to the "Books" category from the top menu.
-    cy.get('.top-menu > :nth-child(1) > [href="/books"]').click();
+    cy.get(".top-menu").find('[href="/books"]').click();
     cy.url().should("include", "books");
     cy.get("h1").should("have.text", "Books");
 
     // 6. Open the "Computing and Internet" product page.
-    cy.get(
-      ":nth-child(1) > .product-item > .details > .product-title > a"
-    ).click();
+    cy.get(".product-item")
+      .find(".product-title")
+      .find('[href="/computing-and-internet"]')
+      .click();
+    cy.url().should("include", "computing-and-internet");
     cy.get("h1").should("contain.text", "Computing and Internet");
 
     // 7. Click "Add to cart".
