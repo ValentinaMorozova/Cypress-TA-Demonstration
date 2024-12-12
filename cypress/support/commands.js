@@ -39,3 +39,17 @@ Cypress.Commands.add("checkPageHeader", (header) => {
 Cypress.Commands.add("checkPageURL", (url) => {
   cy.url().should("eq", Cypress.config("baseUrl") + url);
 });
+
+Cypress.Commands.add("sendRequestToEndpoint", (endpoint, query) => {
+  const url = `${Cypress.config("baseUrl")}/search/${endpoint}.json?q=${query}`;
+  return cy.request("GET", url).then((response) => {
+    return cy.wrap(response);
+  });
+});
+
+Cypress.Commands.add("sendRequestForBookWithTitle", (book) => {
+  const url = `${Cypress.config("baseUrl")}/search.json?q=${book}&fields=title`;
+  return cy.request("GET", url).then((response) => {
+    return cy.wrap(response);
+  });
+});
