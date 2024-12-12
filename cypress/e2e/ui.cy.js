@@ -8,6 +8,10 @@ import { searchPage } from "../support/page_objects/searchPage.js";
 import { shoppingCart } from "../support/page_objects/shoppingCart.js";
 
 describe("UI tests", () => {
+  before("Set baseUrl for UI tests", () => {
+    Cypress.config("baseUrl", Cypress.env("uiBaseUrl"));
+  });
+
   beforeEach("Navigate to the main page", () => {
     // 1. Open the main page.
     mainPage.navigateToMainPage();
