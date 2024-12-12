@@ -2,8 +2,8 @@
 
 class CompletedPage {
   checkPageIsOpened() {
-    cy.url().should("include", "completed");
-    cy.get("h1").should("have.text", "Thank you");
+    cy.checkPageURL("/checkout/completed/");
+    cy.checkPageHeader("Thank you");
   }
 
   checkSuccessMessage() {

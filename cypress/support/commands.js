@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("checkPageHeader", (header) => {
+  cy.get("h1")
+    .invoke("text")
+    .then((text) => {
+      const cleanedText = text
+        .replaceAll("&nbsp;", "")
+        .replaceAll("\n", "")
+        .trim();
+      expect(cleanedText).to.equal(header);
+    });
+});
+
+Cypress.Commands.add("checkPageURL", (url) => {
+  cy.url().should("eq", Cypress.config("baseUrl") + url);
+});

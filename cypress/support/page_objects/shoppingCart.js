@@ -2,8 +2,8 @@
 
 class ShoppingCart {
   checkPageIsOpened() {
-    cy.url().should("include", "cart");
-    cy.get("h1").should("have.text", "Shopping cart");
+    cy.checkPageURL("/cart");
+    cy.checkPageHeader("Shopping cart");
   }
 
   agreeWithTermsOfService() {

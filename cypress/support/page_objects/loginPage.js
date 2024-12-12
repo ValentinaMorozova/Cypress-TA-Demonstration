@@ -2,8 +2,8 @@
 
 class LoginPage {
   checkPageIsOpened() {
-    cy.url().should("include", "login");
-    cy.get("h1").should("have.text", "Welcome, Please Sign In!");
+    cy.checkPageURL("/login");
+    cy.checkPageHeader("Welcome, Please Sign In!");
   }
 
   enterEmail(email) {

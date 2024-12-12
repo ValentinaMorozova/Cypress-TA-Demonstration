@@ -2,8 +2,9 @@
 
 class ProductPage {
   checkPageIsOpened(product) {
-    cy.get("h1").should("contain.text", product);
+    cy.checkPageHeader(product);
   }
+
   addProductToCart() {
     cy.get(".add-to-cart-button").click();
   }

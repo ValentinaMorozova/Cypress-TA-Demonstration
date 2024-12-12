@@ -6,7 +6,7 @@ class MainPage {
   }
 
   checkPageIsOpened() {
-    cy.url().should("eq", Cypress.config("baseUrl"));
+    cy.checkPageURL("/");
   }
 
   clickLogIn() {
@@ -22,7 +22,7 @@ class MainPage {
   }
 
   clickSearch() {
-    cy.get(".search-box-button").click();
+    cy.get(".search-box").find(".search-box-button").click();
   }
 
   navigateToCategoryFromTopMenu(categoryName) {

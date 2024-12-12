@@ -2,8 +2,8 @@
 
 class SearchPage {
   checkPageIsOpened() {
-    cy.url().should("include", "search");
-    cy.get("h1").should("have.text", "Search");
+    cy.url().should("contain", "search");
+    cy.checkPageHeader("Search");
   }
 
   openAdvancedSearch() {
@@ -26,7 +26,7 @@ class SearchPage {
   }
 
   clickSearchButton() {
-    cy.get(".search-button").click();
+    cy.get(".search-input").find(".search-button").click();
   }
 
   checkNumberOfProducts(expectedNumber) {

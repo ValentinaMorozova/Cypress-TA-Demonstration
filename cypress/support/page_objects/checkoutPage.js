@@ -2,8 +2,8 @@
 
 class CheckoutPage {
   checkPageIsOpened() {
-    cy.url().should("include", "onepagecheckout");
-    cy.get("h1").should("have.text", "Checkout");
+    cy.checkPageURL("/onepagecheckout");
+    cy.checkPageHeader("Checkout");
   }
 
   clickButtonInBlock(block) {

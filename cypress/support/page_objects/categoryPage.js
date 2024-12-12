@@ -2,8 +2,8 @@
 
 class CategoryPage {
   checkPageIsOpened(category) {
-    cy.url().should("include", category.toLowerCase());
-    cy.get("h1").should("have.text", category);
+    cy.checkPageURL(`/${category.toLowerCase()}`);
+    cy.checkPageHeader(category);
   }
 
   openSubcategory(subcategoryName) {
