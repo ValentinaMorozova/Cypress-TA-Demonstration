@@ -8,10 +8,6 @@ import { searchPage } from "../support/page_objects/searchPage.js";
 import { shoppingCart } from "../support/page_objects/shoppingCart.js";
 
 describe("UI tests", () => {
-  before("Set baseUrl for UI tests", () => {
-    Cypress.config("baseUrl", Cypress.env("uiBaseUrl"));
-  });
-
   beforeEach("Navigate to the main page", () => {
     // 1. Open the main page.
     mainPage.navigateToMainPage();
@@ -23,10 +19,10 @@ describe("UI tests", () => {
     loginPage.checkPageIsOpened();
 
     // 3. Enter valid credentials for an existing user:
-    //  - email: "ValMor@gmail.com",
-    //  - password: "passw0rd"
-    loginPage.enterEmail("ValMor@gmail.com");
-    loginPage.enterPassword("passw0rd");
+    cy.fixture("ui/user.json").then(({ email, password }) => {
+      loginPage.enterEmail(email);
+      loginPage.enterPassword(password);
+    });
 
     // 4. Click the"Log in" button
     loginPage.clickLoginButton();
@@ -100,10 +96,10 @@ describe("UI tests", () => {
     loginPage.checkPageIsOpened();
 
     // 3. Enter valid credentials for an existing user:
-    //  - email: "ValMor@gmail.com",
-    //  - password: "passw0rd"
-    loginPage.enterEmail("ValMor@gmail.com");
-    loginPage.enterPassword("passw0rd");
+    cy.fixture("ui/user.json").then(({ email, password }) => {
+      loginPage.enterEmail(email);
+      loginPage.enterPassword(password);
+    });
 
     // 4. Click the"Log in" button
     loginPage.clickLoginButton();

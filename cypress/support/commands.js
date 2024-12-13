@@ -41,11 +41,11 @@ Cypress.Commands.add("checkPageURL", (url) => {
 });
 
 Cypress.Commands.add("sendRequestToEndpoint", (endpoint, query) => {
-  const url = `${Cypress.config("baseUrl")}/search/${endpoint}.json?q=${query}`;
+  const url = `${Cypress.env("apiBaseUrl")}/search/${endpoint}.json?q=${query}`;
   return cy.request("GET", url);
 });
 
 Cypress.Commands.add("sendRequestForBookWithTitle", (book) => {
-  const url = `${Cypress.config("baseUrl")}/search.json?q=${book}&fields=title`;
+  const url = `${Cypress.env("apiBaseUrl")}/search.json?q=${book}&fields=title`;
   return cy.request("GET", url);
 });

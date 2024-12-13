@@ -1,8 +1,4 @@
 describe("API tests", () => {
-  before("Set baseUrl for API tests", () => {
-    Cypress.config("baseUrl", Cypress.env("apiBaseUrl"));
-  });
-
   it("001. Validate number of results for authors search", () => {
     cy.fixture("api/search/authors-results").then((testData) => {
       testData.forEach(({ name, numberOfResults }) => {
