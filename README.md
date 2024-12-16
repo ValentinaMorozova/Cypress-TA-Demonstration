@@ -19,9 +19,9 @@ Test reports are generated in a simple HTML format.
 
 ## Requirements
 
-To get started, you need to have [Node.js](https://nodejs.org/en/download/package-manager) version `v22.11.0` or later. To install `cypress` and save its requirement to `package.json`, you can use `npm` package installer with the next command:
+To get started, you need to have [Node.js](https://nodejs.org/en/download/package-manager) version `v22.11.0` or later. You also need to install `cypresss` for run tests and `mochawesome` for reports. For that, you can use `npm` package installer with the next command:
 
-> npm install cypress --save-dev
+> npm install cypress mochawesome --save-dev
 
 ## Environment
 
@@ -46,19 +46,26 @@ To run UI tests, click on `ui.cy.js`
 
 ### Second method
 
-Tests could be run via the command line in main directory.
+Tests could be run via the command line in main directory. `--browser` is an optional parameter, can be `electron`, `chrome`, `edge` or `firefox` (any of those browsers should be installed on your machine in advance).
 
-> npx cypress run --e2e --browser=chrome
+> npx cypress run --browser=chrome
+
+You also can run tests for each spec file separately:
+
+> npx cypress run --spec cypress/e2e/ui.cy.js
+
+For cmd runs, HTML report for each spec could be found in **cypress/reports** directory.
 
 ## Internal structure
 
 - **cypress**: Contains the Java Script code for the automated tests. This includes:
-  - **e2e** ;
-  - **fixtures** ;
-  - **support** .
+  - **e2e** - specs, files with test cases;
+  - **fixtures** - .json files with test data, used for different specs;
+  - **reports** - HTML reports generated for each spec separately;
+  - **support** - page objects file with cypress code, and other supported files.
 - **docs**: Stores all documentation related to the project. This includes:
   - **Task.docx** – task description;
   - **Test cases.xlsx** – traceability matrix;
   - **Test results.xlsx** – bug report.
-- **logs**: Stores example log files generated during test execution.
-- **reports**: Contains HTML reports generated from the test results.
+  - **B-UI-001.png** – screenshot for bug report;
+- **cypress.config.js**: Stores cypress configuration.
