@@ -1,0 +1,22 @@
+[
+  {
+    "searchQuery": "comput",
+    "productCategory": "Computers >> Desktops",
+    "pricesRange": {
+      "from": 800,
+      "to": 1500
+    },
+    "numberOfProducts": [6, 4, 3],
+    "productTitle": "Build your own cheap computer"
+  },
+  {
+    "searchQuery": "comput",
+    "productCategory": "Computers >> Desktops",
+    "pricesRange": {
+      "from": 1000,
+      "to": 1500
+    },
+    "numberOfProducts": [6, 4, 1],
+    "productTitle": "Build your own computer"
+  }
+]
