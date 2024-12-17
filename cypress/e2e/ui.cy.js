@@ -34,16 +34,16 @@ describe("UI tests", () => {
   });
 
   it("002.1. Search computers by different prices ranges", () => {
-    // 2. Enter "computer" in the search panel.
-    mainPage.enterSearchTerm("computer");
+    // 2. Enter "comput" in the search panel.
+    mainPage.enterSearchTerm("comput");
 
     // 3. Click "Search" on the main page.
     mainPage.clickSearch();
     searchPage.checkPageIsOpened();
 
     // Expected Result
-    // 1. There should be 4 products displayed for the initial search after step 3.
-    searchPage.checkNumberOfProducts(4);
+    // 1. There should be 6 products displayed for the initial search after step 3.
+    searchPage.checkNumberOfProducts(6);
 
     // 4. Open "Advanced Search".
     searchPage.openAdvancedSearch();
@@ -51,18 +51,26 @@ describe("UI tests", () => {
     // 5. Select "Computers >> Desktops" from the "Category" dropdown.
     searchPage.selectCategory("Computers >> Desktops");
 
-    // 6. Set the "Price range" to "From 800 to 1500".
-    searchPage.setPriceRange(800, 1500);
-
-    // 7. Click "Search" on the search page.
+    // 6. Click "Search" on the search page.
     searchPage.clickSearchButton();
     searchPage.checkPageIsOpened();
 
     // Expected Result
-    // 2. There should be 3 products displayed for the advanced search after step 7.
+    // 2. There should be 4 products displayed for the search after step 6.
+    searchPage.checkNumberOfProducts(4);
+
+    // 7. Set the "Price range" to "From 800 to 1500".
+    searchPage.setPriceRange(800, 1500);
+
+    // 8. Click "Search" on the search page.
+    searchPage.clickSearchButton();
+    searchPage.checkPageIsOpened();
+
+    // Expected Result
+    // 3. There should be 3 products displayed for the advanced search after step 7.
     searchPage.checkNumberOfProducts(3);
 
-    // 3. The first product in the advanced search should have the title "Build your own cheap computer".
+    // 4. The first product in the advanced search should have the title "Build your own cheap computer".
     searchPage.checkFirstProductTitle("Build your own cheap computer");
   });
 
