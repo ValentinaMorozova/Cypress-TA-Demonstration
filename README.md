@@ -4,7 +4,7 @@
 
 This project serves as a demonstration of my skills in test automation for a QA technical assignment. It includes two types of automated tests: **UI tests** and **API tests**.
 
-The original task can be found in the file `docs/Task.docx`
+The original task can be found in the file **docs/Task.docx**
 
 ## Systems Under Test
 
@@ -12,60 +12,66 @@ The original task can be found in the file `docs/Task.docx`
 
 - API tests check the REST-API for https://openlibrary.org/; documentation is available [here](https://openlibrary.org/developers/api).
 
-# Solution
+## Solution
 
-This project is developed in Cypress.
-Test reports are generated in a simple HTML format.
+This project is developed using the `Cypress` framework to implement a test automation solution. To ensure clean and maintainable code, I have applied the **Page Object Pattern** for organizing UI test elements and actions.
 
-## Requirements
+Test reports are generated in a simple HTML format using the `mochawesome` library.
 
-To get started, you need to have [Node.js](https://nodejs.org/en/download/package-manager) version `v22.11.0` or later. You also need to install `cypresss` for run tests and `mochawesome` for reports. For that, you can use `npm` package installer with the next command:
+### Requirements
+
+To get started, you need to have [Node.js](https://nodejs.org/en/download/package-manager) version `v22.11.0` or later. Additionally, you’ll need to install `Cypress` to run tests and `mochawesome` for generating reports. You can do this by using the `npm` package manager with the following command:
 
 > npm install cypress mochawesome --save-dev
 
-## Environment
+### Environment
 
-The solution was created and tested on Windows 11. For other systems, some adjustments might be needed.
+This solution was developed and tested on **Windows 11**. For other operating systems, some adjustments may be required.
 
-Cypress can run tests on any browser installed on your machine.
-UI tests were tested on **Chrome v131**, **Edge v131** and **Electron v118**.
+`Cypress` supports running tests on any browser installed on your machine. For this project, UI tests were validated on the following browsers:
 
-## Run tests
+- Chrome v131
+- Edge v131
+- Electron v118
 
-### First method
+### Run tests
 
-Tests could be run via `cypress` app.
+#### Method 1: Using the Cypress App
 
-To open cypress, run this in main directory command line:
+You can run the tests using the `Cypress` application.
+
+To open `Cypress`, navigate to the main project directory in your terminal and run the following command:
 
 > npx cypress open
 
-You need to choose `e2e testing` and any browser to open the spec files.
+Once `Cypress` opens, select "E2E Testing" and choose any browser you prefer to run the spec files.
 
-To run UI tests, click on `ui.cy.js`
+To execute the **API tests**, click on the file **api.cy.js**, to execute the **UI tests**, click on the file **ui.cy.js**.
 
-### Second method
+#### Method 2: Using the Command Line
 
-Tests could be run via the command line in main directory. `--browser` is an optional parameter, can be `electron`, `chrome`, `edge` or `firefox` (any of those browsers should be installed on your machine in advance).
+You can also run tests via the command line from the main project directory. The `--browser` flag is optional and can be set to `electron`, `chrome`, `edge` or `firefox` (ensure the selected browser is installed on your machine beforehand).
+
+To run tests with a specific browser, use the following command:
 
 > npx cypress run --browser=chrome
 
-You also can run tests for each spec file separately:
+You can also run tests for individual spec files by specifying the path:
 
 > npx cypress run --spec cypress/e2e/ui.cy.js
 
-For cmd runs, HTML report for each spec could be found in **cypress/reports** directory.
+When running tests via the command line, an HTML report will be generated for each spec file separately in the **cypress/reports** directory.
 
-## Internal structure
+### Internal structure
 
-- **cypress**: Contains the Java Script code for the automated tests. This includes:
-  - **e2e** - specs, files with test cases;
-  - **fixtures** - .json files with test data, used for different specs;
-  - **reports** - HTML reports generated for each spec separately;
-  - **support** - page objects file with cypress code, and other supported files.
-- **docs**: Stores all documentation related to the project. This includes:
-  - **Task.docx** – task description;
-  - **Test cases.xlsx** – traceability matrix;
-  - **Test results.xlsx** – bug report.
-  - **B-UI-001.png** – screenshot for bug report;
-- **cypress.config.js**: Stores cypress configuration.
+- **cypress**: Contains the JavaScript code for the automated tests. This includes:
+  - **e2e**: Spec files with test cases.
+  - **fixtures**: .json files containing test data used across different specs.
+  - **reports**: HTML reports generated for each spec file separately.
+  - **support**: Page object files with `Cypress` code and other supporting files.
+- **docs**: Contains all project-related documentation. This includes:
+  - **Task.docx**: Task description.
+  - **Test cases.xlsx**: Traceability matrix for test cases.
+  - **Test results.xlsx**: Bug report.
+  - **B-UI-001.png**: Screenshot for the bug report.
+- **cypress.config.js**: Cypress configuration file.
